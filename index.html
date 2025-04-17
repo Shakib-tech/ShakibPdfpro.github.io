@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Annotation Tool</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- File Inputs -->
+  <input type="file" id="pdfInput" accept="application/pdf" hidden>
+  <input type="file" id="wordInput" accept=".docx" hidden>
+
+  <!-- Gear Button for All Tools -->
+  <div id="leftPanel">
+    <button id="toggleToolMenu" title="Tools">&#9881;</button>
+    <div id="toolMenu" class="hidden">
+      <button id="choosePdfBtn" title="Open PDF">&#128196;</button>
+      <button id="chooseWordBtn" title="Open Word">&#128209;</button>
+      <button id="zoomIn" title="Zoom In">&#128269;</button>
+      <button id="zoomOut" title="Zoom Out">&#128270;</button>
+      <span id="zoomDisplay">100%</span>
+      <button id="fullscreenBtn" title="Fullscreen">&#x26F6;</button>
+      <button id="shareBtn" title="Share">&#x1F4E4;</button>
+      <button id="togglePalette" title="Theme">&#127912;</button>
+      <button id="toggleAnnotationPanel" title="Annotation">&#9998;</button>
+    </div>
+  </div>
+
+  <!-- Annotation Tools -->
+  <div id="annotationPanel" class="hidden">
+    <button onclick="formatDoc('bold')" title="Bold"><b>B</b></button>
+    <button onclick="formatDoc('italic')" title="Italic"><i>I</i></button>
+    <button onclick="formatDoc('underline')" title="Underline"><u>U</u></button>
+    <button onclick="addText()" title="Add Text">T+</button>
+    <button onclick="applyHighlight('#ffff00')" title="Yellow Highlight">Y</button>
+    <button onclick="applyHighlight('#00ffff')" title="Cyan Highlight">C</button>
+    <button onclick="applyHighlight('#ff00ff')" title="Magenta Highlight">M</button>
+    <button onclick="applyHighlight('#00ff00')" title="Green Highlight">G</button>
+    <button id="undoBtn" title="Undo">&#8617;</button>
+    <button id="redoBtn" title="Redo">&#8618;</button>
+    <button id="saveBtn" title="Save">&#128190;</button>
+    <button id="exportBtn" title="Export">&#128209;</button>
+  </div>
+
+  <!-- Theme Panel -->
+  <div id="paletteMenu" class="hidden">
+    <h4>Background Colors</h4>
+    <div id="bgColors" class="color-grid"></div>
+    <h4>Eye Protection</h4>
+    <div id="eyeFilters" class="color-grid"></div>
+  </div>
+
+  <!-- PDF Viewer -->
+  <iframe id="pdfViewer" class="viewer hidden"></iframe>
+
+  <!-- Word Viewer -->
+  <div id="wordViewer" class="viewer hidden" contenteditable="true"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
